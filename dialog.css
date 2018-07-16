@@ -1,0 +1,76 @@
+.g-dialog-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    /* 新css3 */
+    /* display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align:center; */
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+
+.g-dialog-container .dialog-window {
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+
+    -webkit-transition: all .3s cubic-bezier(0.25, 0.1, 0.46, 1.35);
+}
+
+.g-dialog-container .dialog-window .dialog-header {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    background: url('./lib/investTicket-close.png') no-repeat center;
+    background-size: 50px;
+}
+
+.g-dialog-container .dialog-header.ok {
+    background: url('./lib/redtrue.png') no-repeat center;
+    background-size: 50px;
+}
+
+.g-dialog-container .dialog-header.waiting {
+    background: url('./lib/loading2.gif') no-repeat center;
+    background-size: 50px;
+}
+
+.g-dialog-container .dialog-window .dialog-content {
+    padding: 10px;
+    color: #fff;
+    line-height: 180%;
+    text-align: center;
+}
+
+.g-dialog-container .dialog-window .dialog-footer {
+    padding: 10px 10px 0;
+    /* 不设置盒子模型按钮会掉下来 */
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    -webkit-align-items: center;
+}
+
+.g-dialog-container .dialog-window .dialog-footer button{
+    display: inline-block;
+    -webkit-appearance: normal;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 0.8em 1.8em;
+    border: none;
+    color:#eee;
+    border-radius: 5px;
+    margin: 0 0.3em;
+    text-shadow: #666 1px 1px 0;
+}
+
+.g-dialog-container .dialog-window .dialog-footer button.green{
+    background: rgba(2, 202, 200, 0.8);
+}
+
+.g-dialog-container .dialog-window .dialog-footer button.red{
+    background: rgba(251, 23, 50, 0.8);
+}

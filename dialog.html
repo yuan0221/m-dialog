@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" ,user-scalable="no">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<title>Document</title>
+	<link rel="stylesheet" href="./dialog.css">
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			padding: 20px;
+			font-size: 12px;
+		}
+
+		button {
+			display: block;
+			margin: 20px 0;
+			padding: 10px;
+			width: 100%;
+			border-radius: 10px;
+			background-color: green;
+			color: #fff;
+			border: 1px solid #eee;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- <div class="g-dialog-container">
+		<div class="dialog-window">
+			<div class="dialog-header"></div>
+			<div class="dialog-content">你确定要删除吗？</div>
+			<div class="dialog-footer">
+				<button>确定</button>
+				<button>取消</button>
+			</div>
+		</div>
+	</div> -->
+
+
+
+
+
+
+
+	<button id="btn1">没有传递参数（需要手动关闭）</button>
+	<button id="btn2">弹出警告窗，2s后自动关闭</button>
+	<button id="btn3">弹出有确定和取消的按钮，点击按钮直接关闭</button>
+	<button id="btn4">弹出一个有确认按钮的警示框，点击按钮不关闭（需要手动关闭）</button>
+	<button id="btn5">弹出一个多组合按钮框，并且样式可以定制</button>
+	<button id="btn6">sddsfdjghfsdkj</button>
+	<button id="btn7">动画</button>
+
+</body>
+<script src="./lib/zepto.js"></script>
+<script src="./dialog.js"></script>
+<script>
+	$('#btn1').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog();
+	});
+
+	$('#btn2').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog({
+			type: 'ok',
+			delay: 2000,
+			message: '2秒后关闭',
+		});
+	});
+
+	$('#btn3').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog({
+			type: 'ok',
+			button: [{
+					text: '确认',
+				},
+				{
+					text: '取消',
+				}
+			]
+		});
+	});
+
+	$('#btn4').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog({
+			type: '',
+			button: [{
+				type: 'red',
+				text: '确认',
+				callback: function () {
+					return false;
+				},
+			}, ]
+		});
+	});
+
+	$('#btn5').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog({
+			type: '',
+			button: [{
+					text: '默认',
+					callback: function () {
+						return false;
+					},
+				},
+				{
+					type: 'red',
+					text: '确认',
+				},
+				{
+					type: 'green',
+					text: '取消',
+				},
+			]
+		});
+	});
+
+	$('#btn6').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog({
+			type: 'ok',
+			button: [{
+					type: 'red',
+					text: '确认',
+					callback: function () {
+						$.dialog({
+							type: 'waiting',
+							delay: 2000,
+						})
+						return false;
+					},
+				},
+				{
+					type: 'green',
+					text: '删除',
+					callback: function () {
+						d.close();
+					},
+				},
+			],
+
+		});
+	});
+
+	$('#btn7').on('touchstart', function (event) {
+		event.preventDefault();
+		var d = $.dialog({
+			type: '',
+			button: [{
+					text: '默认',
+					callback: function () {
+						return false;
+					},
+				},
+				{
+					type: 'red',
+					text: '确认',
+				},
+				{
+					type: 'green',
+					text: '取消',
+				},
+			],
+			effect: true,
+		});
+	});
+</script>
+<script>
+	// var d = $.dialog({
+	// 	// width: 100,
+	// 	message: 'are you ok?',
+	// 	type: 'waiting',
+	// 	button: [{
+	// 			type: 'red',
+	// 			text: 'yes',
+	// 			callback: function () {
+	// 				alert(1);
+	// 				return false;
+	// 			}
+	// 		},
+	// 		{
+	// 			type: 'green',
+	// 			text: 'no',
+	// 			callback: function () {
+	// 				alert(2);
+	// 			}
+	// 		}
+	// 	],
+	// 	// delay: 3000,
+	// 	maskOpacity: 0.4
+	// });
+</script>
+
+</html>
